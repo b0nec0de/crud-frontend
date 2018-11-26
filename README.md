@@ -1,4 +1,1 @@
-
-## Available Scripts
-
-A CRUD-App (frontend).
+## A CRUD-App (frontend).
