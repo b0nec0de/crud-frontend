@@ -1,32 +1,111 @@
-.App {
-  text-align: center;
+/* layout */
+
+* {
+	box-sizing: border-box;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+html,
+body {
+	width: 100%;
+	height: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	line-height: 1.42;
+	-webkit-font-smoothing: antialiased;
 }
 
-.App-link {
-  color: #61dafb;
+ul {
+	padding: 0;
+	margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+li {
+	list-style-type: none;
+}
+
+p {
+	padding: 0;
+	margin: 0;
+}
+
+/* auth component styles */
+
+.auth {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.auth__wrapper {
+	width: 400px;
+	height: 380px;
+	border-radius: 10px;
+	background-color: #e8453c;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.auth__form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 100%;
+}
+
+.auth__label {
+	display: flex;
+	flex-direction: column;
+	font-weight: bold;
+	color: #fff;
+}
+
+.auth__label-text {
+	position: relative;
+	display: block;
+	margin-bottom: 24px;
+	letter-spacing: 1px;
+}
+
+.auth__label-text::after {
+	position: absolute;
+	right: 50%;
+	bottom: -5px;
+	transform: translateX(50%);
+	content: '';
+	width: 90px;
+	height: 3px;
+	border-radius: 1.5px;
+	background-color: #fff;
+}
+
+.auth__input {
+	width: 330px;
+	height: 40px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 15px;
+	border-radius: 2px;
+	border: none;
+	outline: none;
+}
+
+.btn {
+	width: 200px;
+	height: 35px;
+	padding: 10px 0;
+	margin: 10px 0 -15px;
+	font-size: 12px;
+	font-weight: bolder;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 1.3px;
+	background: #4688f1;
+	border-radius: 15px;
+	border: none;
+	outline: none;
 }
