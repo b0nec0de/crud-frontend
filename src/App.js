@@ -26,10 +26,10 @@ class App extends Component {
 		const { email, password } = this.state;
 
 		// axios.post(
-		// 	'http://localhost:3000/auth', {
+		// 	'http://localhost:3001/auth', {
 		// 		config: {
 		// 			headers: {
-		// 				'content-type': 'application/json'
+		// 				'content-type': 'application/x-www-form-urlencoded'
 		// 			},
 		// 			data: {
 		// 				email,
@@ -43,7 +43,6 @@ class App extends Component {
 			'http://localhost:3001/auth',
 			{ email, password }
 		)
-
 			.then(response => console.log(response.data))
 			.catch(err => console.log(err))
 	}
