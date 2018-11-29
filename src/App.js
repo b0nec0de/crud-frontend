@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import dotenv from 'dotenv';
+import { withCookies } from 'react-cookie';
 import './App.css';
 
-// dotenv.config();
 
 class App extends Component {
 	constructor(props) {
 		super(props);
+		const { cookies } = this.props;
 		this.state = {
 			email: '',
-			password: ''
+			password: '',
+			token: cookies.get('token')
 		};
 	}
 
@@ -22,9 +23,8 @@ class App extends Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
-
-		const { email, password } = this.state;
-
+		const { email, password, token } = this.state;
+		const { cookies } = this.props;
 		// axios.post(
 		// 	'http://localhost:3001/auth', {
 		// 		config: {
@@ -43,9 +43,13 @@ class App extends Component {
 			'http://localhost:3001/auth',
 			{ email, password }
 		)
-			.then(response => console.log(response.data))
+			.then(response => {
+				cookies.set('token', response.data.token)
+			})
+			.then(this.setState({ token }))
 			.catch(err => console.log(err))
 	}
+
 
 	render() {
 		return (
@@ -80,4 +84,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default withCookies(App);
