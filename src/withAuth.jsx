@@ -14,7 +14,7 @@ export default function withAuth(ComponentToProtect) {
 
     componentDidMount() {
       axios('http://localhost:3001/checkToken', {
-        method: 'post',
+        method: 'get',
         withCredentials: true
       })
         .then(res => {

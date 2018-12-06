@@ -20,7 +20,7 @@ class Home extends Component {
 
   componentDidMount = () => {
     axios('http://localhost:3001/home', {
-      method: 'post',
+      method: 'get',
       withCredentials: true
     })
       .then(res => {
