@@ -1,12 +1,15 @@
 .auth {
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	/* justify-content: center;
+	align-items: center; */
 	min-height: 100vh;
 }
 
 .auth__wrapper {
-	position: relative;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	width: 400px;
 	height: 440px;
 	border-radius: 10px;
@@ -84,7 +87,7 @@
 }
 
 
-.btn {
+.auth__btn {
   display: block;
   width: 200px;
 	height: 40px;
@@ -103,7 +106,7 @@
 	border-radius: 20px;
 	border: none;
   outline: none;
-	box-shadow: 4px 4px 1px #4688f1;;
+	box-shadow: 4px 4px 1px #4688f1;
 }
 
 .auth__btn-signup {

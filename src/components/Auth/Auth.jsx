@@ -81,12 +81,12 @@ class Auth extends Component {
 			<div>
 				{!redirect
 					? <div className="auth">
-						< div className="auth__wrapper" >
+						<div className="auth__wrapper">
 							{
 								this.state.message &&
 								< div className="auth__message">{this.state.message}</div>
 							}
-							< form className="auth__form" onSubmit={this.handleSubmit} >
+							<form className="auth__form" onSubmit={this.handleSubmit}>
 								<label className="auth__label">
 									<span className="auth__label-text">email</span>
 									<input
@@ -109,10 +109,10 @@ class Auth extends Component {
 										onChange={this.handleInputChange}
 									/>
 								</label>
-								<button className="btn auth__btn-signin" type="submit">
+								<button className="auth__btn auth__btn-signin" type="submit">
 									Sign In
-							</button>
-								<button className="btn auth__btn-signup" type="submit" onClick={this.handleSignUp}>Sign Up</button>
+								</button>
+								<button className="auth__btn auth__btn-signup" type="submit" onClick={this.handleSignUp}>Sign Up</button>
 							</form >
 						</div >
 					</div >

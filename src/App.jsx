@@ -6,7 +6,7 @@ import withAuth from './withAuth';
 import './App.css';
 
 
-function App() {
+const App = () => {
 
 	return (
 

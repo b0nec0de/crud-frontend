@@ -1,0 +1,33 @@
+.content {
+  position: relative;
+  width: 67%;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.user__list {
+  list-style-type: none;
+}
+
+.user__item {
+  
+  min-height: 150px;
+  padding: 15px;
+  margin-bottom: 20px;
+  width: 500px;
+  border: 1px solid mediumseagreen;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 3px 3px 0px mediumseagreen;
+  /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2), 0 4px 15px 0 rgba(0, 0, 0, .19); */
+}
+
+.user__item-name, .user__item-age, .user__item-email, .user__item-city, .user__item-occupation {
+  display: inline-block;
+  margin: 0;
+  padding: 10px;
+  font-weight: 600;
+  color: #e8453c;
+}

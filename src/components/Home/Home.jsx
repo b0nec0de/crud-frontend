@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Content from './components/Content';
+import Menu from './components/Menu/Menu';
+
+import './Home.css';
+
 class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
+      users: null,
       isLoading: false,
-      error: null
+      error: null,
+      isShown: false
     }
   }
 
@@ -18,32 +25,56 @@ class Home extends Component {
     })
   }
 
+  toggleMenu = () => {
+    console.log('toggle');
+    this.setState({
+      isShown: !this.state.isShown
+    });
+  }
+
   componentDidMount = () => {
+
+    this.setState({ isLoading: true });
+
     axios('http://localhost:3001/home', {
       method: 'get',
       withCredentials: true
     })
       .then(res => {
+
         this.setState({
-          message: "You are at home"
+          users: res.data,
+          isLoading: false
         })
       })
       .catch(error => this.showError(error));
   }
 
   render() {
-    const { isLoading, error } = this.state;
+    const { isLoading, isShown, error, users } = this.state;
+
     if (error) {
       return <p>{error.message}</p>
     }
 
     if (isLoading) {
-      return <p className="loading-message">Loading...</p>
+      return <p className="loading">Loading...</p>
+    }
+
+    if (!users) {
+      return null
     }
 
     return (
-      <div>
-        <h3>Home</h3>
+      <div className="main">
+        <Content
+          isShown={isShown}
+          users={users}
+          toggleMenu={this.toggleMenu}
+        />
+        <Menu
+          isShown={isShown}
+        />
       </div>
     );
   }
