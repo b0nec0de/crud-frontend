@@ -4,8 +4,9 @@
 }
 
 .menu {
-  position: relative;
-  display: flex;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 250px;
   flex-direction: column;
   background-color: mediumseagreen;
   padding: 30px 30px 50px 30px;
@@ -19,7 +20,7 @@
   display: block;
   content: '';
   width: 1px;
-  height: 100vh;
+  height: 68vh;
   background: mediumseagreen;
 }
 

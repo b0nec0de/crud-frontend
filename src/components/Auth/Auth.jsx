@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+
 import './Auth.css';
 
 
@@ -8,12 +9,11 @@ class Auth extends Component {
 
 	constructor(props) {
 		super(props);
-		// this.textInput = React.createRef();
 
 		this.state = {
+			message: '',
 			email: '',
 			password: '',
-			message: '',
 			loading: false,
 			redirect: false,
 			path: ''
@@ -40,7 +40,9 @@ class Auth extends Component {
 		})
 			.then(res => {
 				this.setState({
-					message: res.data.message
+					message: res.data.message,
+					email: '',
+					password: ''
 				})
 				if (res.data.success !== false) {
 
@@ -67,7 +69,9 @@ class Auth extends Component {
 		)
 			.then(res => {
 				this.setState({
-					message: res.data.message
+					message: res.data.message,
+					email: '',
+					password: ''
 				})
 			})
 			.catch(err => console.log(err))
@@ -94,7 +98,6 @@ class Auth extends Component {
 										type="email"
 										name="email"
 										value={this.state.email}
-										// ref={this.textInput}
 										onChange={this.handleInputChange}
 									/>
 								</label>
@@ -105,7 +108,6 @@ class Auth extends Component {
 										type="password"
 										name="password"
 										value={this.state.password}
-										// ref={this.textInput}
 										onChange={this.handleInputChange}
 									/>
 								</label>

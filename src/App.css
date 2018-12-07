@@ -71,7 +71,7 @@ h6 {
 
 .btn-edit,
 .btn-close {
-	position: absolute;
+	position: fixed;
 	top: 70px;
 	right: 80px;
 }

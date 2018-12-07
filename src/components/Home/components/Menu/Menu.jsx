@@ -43,7 +43,12 @@ class Menu extends Component {
     })
       .then(res => {
         this.setState({
-          message: res.data.message
+          message: res.data.message,
+          email: '',
+          name: '',
+          age: '',
+          occupation: '',
+          city: ''
         })
         isUpdating();
       })
