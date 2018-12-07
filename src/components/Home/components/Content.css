@@ -1,13 +1,17 @@
 .content {
   position: relative;
+  display: flex;
   width: 67%;
+  padding-left: 35px;
 }
 
 .header {
   margin-bottom: 40px;
+  padding-right: 70px;
 }
 
 .user__list {
+  padding-top: 85px;
   list-style-type: none;
 }
 

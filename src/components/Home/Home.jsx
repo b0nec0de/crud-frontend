@@ -12,40 +12,54 @@ class Home extends Component {
 
     this.state = {
       users: [],
+      visible: 10,
       isLoading: false,
       error: null,
-      isShown: false
+      isShown: false,
+      searchTerm: ''
     }
   }
+
+  // onSearchChange = (e) => {
+  //   const { users } = this.state;
+
+  //   let searchQuery = e.target.value;
+  //   let filteredList = users.filter(item => {
+  //     let searchValue = item.name;
+  //     return searchValue.indexOf(searchQuery) !== -1;
+  //   });
+
+  //   this.setState({
+  //     searchTerm: e.target.value,
+  //     users: filteredList
+  //   })
+  // };
 
   showError = (error) => {
     this.setState({
       error,
       isLoading: false
-    })
-  }
+    });
+  };
 
   toggleMenu = () => {
     this.setState({
       isShown: !this.state.isShown
     });
-  }
+  };
 
-  componentDidMount = () => {
+  handleScroll = () => {
     this.setState({ isLoading: true });
 
-    axios('http://localhost:3001/home', {
-      method: 'get',
-      withCredentials: true
-    })
-      .then(res => {
+    window.onscroll = () => {
+      let bottomOfWindow = document.body.scrollTop || document.documentElement.scrollTop + document.documentElement.clientHeight === document.documentElement.scrollHeight;
+      if (bottomOfWindow) {
         this.setState({
-          users: res.data,
-          isLoading: false
+          visible: this.state.visible + 5
         })
-      })
-      .catch(error => this.showError(error));
-  }
+      };
+    }
+  };
 
   handleUpdatingUsers = () => {
 
@@ -61,11 +75,29 @@ class Home extends Component {
         })
       })
       .catch(error => this.showError(error));
-  }
+  };
+
+  componentDidMount = () => {
+    this.setState({ isLoading: true });
+
+    axios('http://localhost:3001/home', {
+      method: 'get',
+      withCredentials: true
+    })
+      .then(res => {
+        this.setState({
+          users: res.data,
+          isLoading: false
+        })
+      })
+      .catch(error => this.showError(error));
+
+    this.handleScroll();
+  };
 
 
   render() {
-    const { isLoading, isShown, error, users } = this.state;
+    const { isLoading, isShown, error, users, visible, searchTerm } = this.state;
 
     if (error) {
       return <p>{error.message}</p>
@@ -86,6 +118,9 @@ class Home extends Component {
           isShown={isShown}
           users={users}
           toggleMenu={this.toggleMenu}
+          visible={visible}
+          value={searchTerm}
+          onChange={this.onSearchChange}
         />
         <Menu
           isShown={isShown}
