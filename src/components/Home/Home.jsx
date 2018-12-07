@@ -11,7 +11,7 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      users: null,
+      users: [],
       isLoading: false,
       error: null,
       isShown: false
@@ -26,15 +26,28 @@ class Home extends Component {
   }
 
   toggleMenu = () => {
-    console.log('toggle');
     this.setState({
       isShown: !this.state.isShown
     });
   }
 
   componentDidMount = () => {
-
     this.setState({ isLoading: true });
+
+    axios('http://localhost:3001/home', {
+      method: 'get',
+      withCredentials: true
+    })
+      .then(res => {
+        this.setState({
+          users: res.data,
+          isLoading: false
+        })
+      })
+      .catch(error => this.showError(error));
+  }
+
+  handleUpdatingUsers = () => {
 
     axios('http://localhost:3001/home', {
       method: 'get',
@@ -50,6 +63,7 @@ class Home extends Component {
       .catch(error => this.showError(error));
   }
 
+
   render() {
     const { isLoading, isShown, error, users } = this.state;
 
@@ -58,6 +72,7 @@ class Home extends Component {
     }
 
     if (isLoading) {
+      this.handleUpdatingUsers();
       return <p className="loading">Loading...</p>
     }
 
@@ -74,6 +89,9 @@ class Home extends Component {
         />
         <Menu
           isShown={isShown}
+          users={users}
+          isLoading={isLoading}
+          isUpdating={this.handleUpdatingUsers}
         />
       </div>
     );

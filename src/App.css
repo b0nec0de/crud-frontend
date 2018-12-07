@@ -22,7 +22,6 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	line-height: 1.42;
-	-webkit-font-smoothing: antialiased;
 }
 
 ul {
@@ -52,7 +51,6 @@ h6 {
 .app {
 	display: flex;
 	flex-direction: column;
-	padding: 80px 100px 0 120px;
 }
 
 .loading {

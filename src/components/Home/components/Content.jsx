@@ -11,9 +11,27 @@ const Content = ({ users, isShown, toggleMenu }) => {
       <h1 className="header content__header">Users List</h1>
       <ul className="user__list">
         {users.map(user =>
-          <li key={user.id} className="user__item">
-            <span className="user__item-email">Email: </span>
-            {user.email}
+          <li key={user.email} className="user__item">
+            <div className="user__item-wrapper">
+              <span className="user__item-descr">Email: </span>
+              {user.email}
+            </div>
+            <div className="user__item-wrapper">
+              <span className="user__item-descr">Name: </span>
+              {user.name}
+            </div>
+            <div className="user__item-wrapper">
+              <span className="user__item-descr">Age: </span>
+              {user.age}
+            </div>
+            <div className="user__item-wrapper">
+              <span className="user__item-descr">Occupation: </span>
+              {user.occupation}
+            </div>
+            <div className="user__item-wrapper">
+              <span className="user__item-descr">City: </span>
+              {user.city}
+            </div>
           </li>
         )}
       </ul>
