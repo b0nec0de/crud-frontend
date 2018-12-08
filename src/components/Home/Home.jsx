@@ -7,130 +7,129 @@ import Menu from './components/Menu/Menu';
 import './Home.css';
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.state = {
-      users: [],
-      visible: 10,
-      isLoading: false,
-      error: null,
-      isShown: false,
-      searchTerm: ''
-    }
-  }
+		this.state = {
+			users: [],
+			visible: 5,
+			isLoading: false,
+			error: null,
+			isShown: false,
+			searchTerm: ''
+		};
+	}
 
-  // onSearchChange = (e) => {
-  //   const { users } = this.state;
+	onSearchChange = e => {
+		this.setState({
+			searchTerm: e.target.value
+		});
+	};
 
-  //   let searchQuery = e.target.value;
-  //   let filteredList = users.filter(item => {
-  //     let searchValue = item.name;
-  //     return searchValue.indexOf(searchQuery) !== -1;
-  //   });
+	showError = error => {
+		this.setState({
+			error,
+			isLoading: false
+		});
+	};
 
-  //   this.setState({
-  //     searchTerm: e.target.value,
-  //     users: filteredList
-  //   })
-  // };
+	toggleMenu = () => {
+		this.setState({
+			isShown: !this.state.isShown
+		});
+	};
 
-  showError = (error) => {
-    this.setState({
-      error,
-      isLoading: false
-    });
-  };
+	handleScroll = () => {
+		this.setState({ isLoading: true });
 
-  toggleMenu = () => {
-    this.setState({
-      isShown: !this.state.isShown
-    });
-  };
+		window.onscroll = () => {
+			let bottomOfWindow =
+				document.body.scrollTop ||
+				document.documentElement.scrollTop +
+					document.documentElement.clientHeight ===
+					document.documentElement.scrollHeight;
+			if (bottomOfWindow) {
+				this.setState({
+					visible: this.state.visible + 5
+				});
+			}
+		};
+	};
 
-  handleScroll = () => {
-    this.setState({ isLoading: true });
+	handleUpdatingUsers = () => {
+		axios('http://localhost:3001/home', {
+			method: 'get',
+			withCredentials: true
+		})
+			.then(res => {
+				this.setState({
+					users: res.data,
+					isLoading: false
+				});
+			})
+			.catch(error => this.showError(error));
+	};
 
-    window.onscroll = () => {
-      let bottomOfWindow = document.body.scrollTop || document.documentElement.scrollTop + document.documentElement.clientHeight === document.documentElement.scrollHeight;
-      if (bottomOfWindow) {
-        this.setState({
-          visible: this.state.visible + 5
-        })
-      };
-    }
-  };
+	componentDidMount = () => {
+		this.setState({ isLoading: true });
 
-  handleUpdatingUsers = () => {
+		axios('http://localhost:3001/home', {
+			method: 'get',
+			withCredentials: true
+		})
+			.then(res => {
+				this.setState({
+					users: res.data,
+					isLoading: false
+				});
+			})
+			.catch(error => this.showError(error));
 
-    axios('http://localhost:3001/home', {
-      method: 'get',
-      withCredentials: true
-    })
-      .then(res => {
+		this.handleScroll();
+	};
 
-        this.setState({
-          users: res.data,
-          isLoading: false
-        })
-      })
-      .catch(error => this.showError(error));
-  };
+	render() {
+		const {
+			isLoading,
+			isShown,
+			error,
+			users,
+			visible,
+			searchTerm
+		} = this.state;
 
-  componentDidMount = () => {
-    this.setState({ isLoading: true });
+		if (error) {
+			return <p>{error.message}</p>;
+		}
 
-    axios('http://localhost:3001/home', {
-      method: 'get',
-      withCredentials: true
-    })
-      .then(res => {
-        this.setState({
-          users: res.data,
-          isLoading: false
-        })
-      })
-      .catch(error => this.showError(error));
+		if (isLoading) {
+			this.handleUpdatingUsers();
+			return <p className="loading">Loading...</p>;
+		}
 
-    this.handleScroll();
-  };
+		if (!users) {
+			return null;
+		}
 
-
-  render() {
-    const { isLoading, isShown, error, users, visible, searchTerm } = this.state;
-
-    if (error) {
-      return <p>{error.message}</p>
-    }
-
-    if (isLoading) {
-      this.handleUpdatingUsers();
-      return <p className="loading">Loading...</p>
-    }
-
-    if (!users) {
-      return null
-    }
-
-    return (
-      <div className="main">
-        <Content
-          isShown={isShown}
-          users={users}
-          toggleMenu={this.toggleMenu}
-          visible={visible}
-          value={searchTerm}
-          onChange={this.onSearchChange}
-        />
-        <Menu
-          isShown={isShown}
-          users={users}
-          isLoading={isLoading}
-          isUpdating={this.handleUpdatingUsers}
-        />
-      </div>
-    );
-  }
+		return (
+			<div className="main">
+				<Content
+					isShown={isShown}
+					users={users}
+					visible={visible}
+					value={searchTerm}
+					onSearchChange={this.onSearchChange}
+				/>
+				<Menu
+					isShown={isShown}
+					toggleMenu={this.toggleMenu}
+					users={users}
+					isLoading={isLoading}
+					isUpdating={this.handleUpdatingUsers}
+				/>
+			</div>
+		);
+	}
 }
 
 export default Home;

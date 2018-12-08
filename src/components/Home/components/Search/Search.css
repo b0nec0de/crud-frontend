@@ -1,10 +1,26 @@
+.search {
+	position: absolute;
+	right: 94px;
+	height: 50px;
+}
+
 .search__input {
-  height: 50px;
-  width: 500px;
-  padding-left: 20px;
-  margin-left: 105px;
-  font-size: 16px;
-  border: 1.5px solid #3aa757;
-  border-radius: 25px;
-  outline: none;
+	height: 50px;
+	width: 315px;
+	padding-left: 20px;
+	font-size: 16px;
+	border: 1.5px solid #3aa757;
+	border-radius: 25px;
+	outline: none;
+}
+
+/* laptop */
+
+@media (max-width: 1280px) {
+	.search {
+		right: 36px;
+	}
+	.search__input {
+		width: 250px;
+	}
 }
