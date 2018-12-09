@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Button from '../Button';
 
-import './Menu.css';
+import './Menu.scss';
 
 class Menu extends Component {
 	constructor(props) {

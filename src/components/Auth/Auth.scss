@@ -17,6 +17,10 @@
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
 }
 
+.auth__wrapper-sign {
+	height: 660px;
+}
+
 .auth__message {
 	position: absolute;
 	top: 30px;
@@ -28,8 +32,8 @@
 	color: #fff;
 	/* color: #e8453c; */
 	font-weight: bold;
-	letter-spacing: .5;
-	padding: 3px 0 3px 0; 
+	letter-spacing: 0.5;
+	padding: 3px 0 3px 0;
 	border-radius: 2px;
 	background: transparent;
 	/* background: #fff; */
@@ -38,15 +42,15 @@
 .auth__form {
 	display: flex;
 	flex-direction: column;
-  justify-content: center;
+	justify-content: center;
 	align-items: center;
-  text-align: center;
-  padding-top: 60px;
+	text-align: center;
+	padding-top: 60px;
 	height: 100%;
-}
 
-.auth__form :nth-child(2) > input {
-  margin-bottom: 50px;
+	& :nth-child(2) > input {
+		margin-bottom: 50px;
+	}
 }
 
 .auth__label {
@@ -61,18 +65,18 @@
 	display: block;
 	margin-bottom: 24px;
 	letter-spacing: 1px;
-}
 
-.auth__label-text::after {
-	position: absolute;
-	right: 50%;
-	bottom: -5px;
-	transform: translateX(50%);
-	content: '';
-	width: 90px;
-	height: 3px;
-	border-radius: 1.5px;
-	background-color: #fff;
+	&::after {
+		position: absolute;
+		right: 50%;
+		bottom: -5px;
+		transform: translateX(50%);
+		content: '';
+		width: 90px;
+		height: 3px;
+		border-radius: 1.5px;
+		background-color: #fff;
+	}
 }
 
 .auth__input {
@@ -86,32 +90,31 @@
 	outline: none;
 }
 
-
 .auth__btn {
-  display: block;
-  width: 200px;
+	display: block;
+	width: 200px;
 	height: 40px;
-  padding: 10px 0;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1.3px;
-  cursor: pointer;
+	padding: 10px 0;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1.3px;
+	cursor: pointer;
 }
 
 .auth__btn-signin {
-  margin-bottom: 15px;
+	margin-bottom: 15px;
 	color: #3aa757;
 	background: #f9bb2d;
 	border-radius: 20px;
 	border: none;
-  outline: none;
+	outline: none;
 	box-shadow: 4px 4px 1px #4688f1;
 }
 
 .auth__btn-signup {
-  color: #fff;
-  border: none;
-  outline: none;
-  background-color: transparent;
+	color: #fff;
+	border: none;
+	outline: none;
+	background-color: transparent;
 }

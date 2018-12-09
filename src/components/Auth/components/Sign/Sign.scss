@@ -1,0 +1,20 @@
+.sign {
+	.auth__form {
+		padding-top: 70px;
+
+		& :nth-child(2) > input {
+			margin-bottom: 8px;
+		}
+
+		& :nth-child(6) > input {
+			margin-bottom: 20px;
+		}
+	}
+	.auth__label-text {
+		margin-bottom: 14px;
+	}
+
+	.auth__input {
+		margin-bottom: 10px;
+	}
+}

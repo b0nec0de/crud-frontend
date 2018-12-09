@@ -1,0 +1,116 @@
+.login {
+	display: flex;
+	/* justify-content: center;
+	align-items: center; */
+	min-height: 100vh;
+}
+
+.login__wrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 400px;
+	height: 440px;
+	border-radius: 10px;
+	background-color: #e8453c;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login__message {
+	position: absolute;
+	top: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 30px;
+	width: 330px;
+	text-align: center;
+	color: #fff;
+	/* color: #e8453c; */
+	font-weight: bold;
+	letter-spacing: 0.5;
+	padding: 3px 0 3px 0;
+	border-radius: 2px;
+	background: transparent;
+	/* background: #fff; */
+}
+
+.login__form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding-top: 60px;
+	height: 100%;
+}
+
+.login__form :nth-child(2) > input {
+	margin-bottom: 50px;
+}
+
+.login__label {
+	display: flex;
+	flex-direction: column;
+	font-weight: bold;
+	color: #fff;
+}
+
+.login__label-text {
+	position: relative;
+	display: block;
+	margin-bottom: 24px;
+	letter-spacing: 1px;
+}
+
+.login__label-text::after {
+	position: absolute;
+	right: 50%;
+	bottom: -5px;
+	transform: translateX(50%);
+	content: '';
+	width: 90px;
+	height: 3px;
+	border-radius: 1.5px;
+	background-color: #fff;
+}
+
+.login__input {
+	width: 330px;
+	height: 40px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 15px;
+	border-radius: 2px;
+	border: none;
+	outline: none;
+}
+
+.login__btn {
+	display: block;
+	width: 200px;
+	height: 40px;
+	padding: 10px 0;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1.3px;
+	cursor: pointer;
+}
+
+.login__btn-signin {
+	margin-bottom: 15px;
+	color: #3aa757;
+	background: #f9bb2d;
+	border-radius: 20px;
+	border: none;
+	outline: none;
+	box-shadow: 4px 4px 1px #4688f1;
+}
+
+.login__btn-signup {
+	color: #fff;
+	border: none;
+	outline: none;
+	background-color: transparent;
+}

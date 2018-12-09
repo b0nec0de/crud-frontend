@@ -4,7 +4,7 @@ import axios from 'axios';
 import Content from './components/Content';
 import Menu from './components/Menu/Menu';
 
-import './Home.css';
+import './Home.scss';
 
 class Home extends Component {
 	constructor(props) {
