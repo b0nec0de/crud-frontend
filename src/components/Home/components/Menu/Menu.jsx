@@ -25,13 +25,13 @@ class Menu extends Component {
 		});
 	};
 
-	handleSubmit = event => {
+	handleDelete = event => {
 		event.preventDefault();
 		const { email, name, age, occupation, city } = this.state;
 		const { isUpdating } = this.props;
 
-		axios('http://localhost:3001/edit', {
-			method: 'post',
+		axios('http://localhost:3001/delete', {
+			method: 'delete',
 			data: {
 				email,
 				name,
@@ -39,6 +39,39 @@ class Menu extends Component {
 				occupation,
 				city
 			},
+			withCredentials: true
+		})
+			.then(res => {
+				this.setState({
+					message: res.data.message,
+					email: '',
+					name: '',
+					age: '',
+					occupation: '',
+					city: ''
+				});
+				isUpdating();
+			})
+			.catch(err => console.log(err));
+	}
+
+	handleEdit = event => {
+		event.preventDefault();
+		const { isUpdating } = this.props;
+
+		const data = {};
+
+		for (let i of ['email', 'name', 'age', 'occupation', 'city']) {
+			const value = this.state[i]
+
+			if (value !== '') {
+				data[i] = value;
+			}
+		}
+
+		axios('http://localhost:3001/edit', {
+			method: 'put',
+			data,
 			withCredentials: true
 		})
 			.then(res => {
@@ -65,7 +98,7 @@ class Menu extends Component {
 						{this.state.message && (
 							<div className="menu__message">{this.state.message}</div>
 						)}
-						<form className="menu__form" onSubmit={this.handleSubmit}>
+						<form className="menu__form" onSubmit={this.handleEdit}>
 							<label className="menu__label">
 								<span className="menu__label-text">email</span>
 								<input
@@ -121,7 +154,14 @@ class Menu extends Component {
 								className="menu__btn menu__btn-signin"
 								type="submit"
 							>
-								Submit
+								Edit
+							</button>
+							<button
+								className="menu__btn menu__btn-signup"
+								type="submit"
+								onClick={this.handleDelete}
+							>
+								Remove
 							</button>
 						</form>
 					</div>

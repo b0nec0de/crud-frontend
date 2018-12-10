@@ -46,8 +46,8 @@ class Home extends Component {
 			let bottomOfWindow =
 				document.body.scrollTop ||
 				document.documentElement.scrollTop +
-					document.documentElement.clientHeight ===
-					document.documentElement.scrollHeight;
+				document.documentElement.clientHeight ===
+				document.documentElement.scrollHeight;
 			if (bottomOfWindow) {
 				this.setState({
 					visible: this.state.visible + 5

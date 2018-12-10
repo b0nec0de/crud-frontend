@@ -5,8 +5,16 @@ import Search from './Search/Search';
 import './Content.css';
 
 const Content = ({ users, visible, value, onSearchChange }) => {
-	const isSearched = value => user =>
-		user.email.toLowerCase().includes(value.toLowerCase());
+	// const isSearched = value => user =>
+	// 	user.email.toLowerCase().includes(value.toLowerCase());
+
+	const isSearched = (value) => {
+		return (user) => {
+			const { email = '' } = user
+			return email.toLowerCase().includes(value.toLowerCase())
+		}
+	}
+
 
 	return (
 		<div className="content">
@@ -17,7 +25,7 @@ const Content = ({ users, visible, value, onSearchChange }) => {
 						.slice(0, visible)
 						.filter(isSearched(value))
 						.map(user => (
-							<li key={user.email} className="user__item">
+							<li key={user._id} className="user__item">
 								<div className="user__item-wrapper">
 									<span className="user__item-descr">Email: </span>
 									{user.email}
@@ -52,6 +60,7 @@ const Content = ({ users, visible, value, onSearchChange }) => {
 export default Content;
 
 Content.propTypes = {
+	email: PropTypes.string,
 	users: PropTypes.array,
 	visible: PropTypes.number,
 	value: PropTypes.string,
