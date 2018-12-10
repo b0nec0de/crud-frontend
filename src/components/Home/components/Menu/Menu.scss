@@ -12,19 +12,20 @@
 	padding: 30px 30px 50px 30px;
 	border-radius: 5px;
 	background-color: mediumseagreen;
+
+	&::before {
+		position: absolute;
+		top: -30px;
+		left: -50px;
+		margin-top: 30px;
+		display: block;
+		content: '';
+		width: 1px;
+		height: 90vh;
+		background: mediumseagreen;
+	}
 }
 
-.menu::before {
-	position: absolute;
-	top: -30px;
-	left: -50px;
-	margin-top: 30px;
-	display: block;
-	content: '';
-	width: 1px;
-	height: 90vh;
-	background: mediumseagreen;
-}
 
 .menu__message {
 	position: absolute;
@@ -50,10 +51,15 @@
 	text-align: center;
 	height: 100%;
 	padding-top: 60px;
-}
 
-.menu__form :nth-child(5) > input {
-	margin-bottom: 40px;
+
+	& :nth-child(5) > input {
+		margin-bottom: 40px;
+	}
+
+	& > button:nth-of-type(1) {
+		margin-bottom: 30px;
+	}
 }
 
 .menu__label {
@@ -68,18 +74,19 @@
 	display: block;
 	margin-bottom: 24px;
 	letter-spacing: 1px;
-}
 
-.menu__label-text::after {
-	position: absolute;
-	right: 50%;
-	bottom: -5px;
-	transform: translateX(50%);
-	content: '';
-	width: 90px;
-	height: 3px;
-	border-radius: 1.5px;
-	background-color: #fff;
+
+	&::after {
+		position: absolute;
+		right: 50%;
+		bottom: -5px;
+		transform: translateX(50%);
+		content: '';
+		width: 90px;
+		height: 3px;
+		border-radius: 1.5px;
+		background-color: #fff;
+	}
 }
 
 .menu__input {
