@@ -112,10 +112,22 @@
 	border-radius: 20px;
 	border: none;
 	outline: none;
-	color: #fff;
+	color: #4688f1;
 	background-color: #f0a800;
 	box-shadow: 4px 4px 1px #fff;
 	cursor: pointer;
+
+		&:hover {
+			box-shadow: 4px 4px 1px #4688f1;
+		}
+
+	&-signup {
+		color: #e8453c;
+		
+		&:hover {
+			box-shadow: 4px 4px 1px #e8453c;
+		}
+	}
 }
 
 /* laptop */

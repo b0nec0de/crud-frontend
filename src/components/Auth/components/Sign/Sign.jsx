@@ -98,7 +98,7 @@ Sign.propTypes = {
 	name: PropTypes.string,
 	age: PropTypes.string,
 	occupation: PropTypes.string,
-	city: PropTypes.city,
+	city: PropTypes.string,
 	change: PropTypes.func,
 	sign: PropTypes.func
 }

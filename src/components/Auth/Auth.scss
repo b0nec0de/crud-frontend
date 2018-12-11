@@ -104,12 +104,18 @@
 
 .auth__btn-signin {
 	margin-bottom: 15px;
-	color: #3aa757;
-	background: #f9bb2d;
+	color: #fff;
+	background-color: #4688f1;
 	border-radius: 20px;
 	border: none;
 	outline: none;
-	box-shadow: 4px 4px 1px #4688f1;
+	box-shadow: 4px 4px 1px #fff;
+
+	&:hover {
+		color: #4688f1;
+		background-color: #f9bb2d;
+		box-shadow: 4px 4px 1px #4688f1;
+	}
 }
 
 .auth__btn-signup {
@@ -117,4 +123,9 @@
 	border: none;
 	outline: none;
 	background-color: transparent;
+
+	&:hover {
+		text-decoration: underline;
+		color: #fff;
+	}
 }
