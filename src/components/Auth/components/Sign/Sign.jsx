@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Sign.scss';
 
@@ -23,6 +24,7 @@ const Sign = ({
 						name="email"
 						value={email}
 						onChange={change}
+						required
 					/>
 				</label>
 				<label className="auth__label">
@@ -33,6 +35,7 @@ const Sign = ({
 						name="password"
 						value={password}
 						onChange={change}
+						required
 					/>
 				</label>
 				<label className="auth__label">
@@ -43,6 +46,7 @@ const Sign = ({
 						name="name"
 						value={name}
 						onChange={change}
+						required
 					/>
 				</label>
 				<label className="auth__label">
@@ -53,6 +57,7 @@ const Sign = ({
 						name="age"
 						value={age}
 						onChange={change}
+						required
 					/>
 				</label>
 				<label className="auth__label">
@@ -63,6 +68,7 @@ const Sign = ({
 						name="occupation"
 						value={occupation}
 						onChange={change}
+						required
 					/>
 				</label>
 				<label className="auth__label">
@@ -73,6 +79,7 @@ const Sign = ({
 						name="city"
 						value={city}
 						onChange={change}
+						required
 					/>
 				</label>
 				<button className="auth__btn auth__btn-signin" type="submit">
@@ -84,3 +91,14 @@ const Sign = ({
 };
 
 export default Sign;
+
+Sign.propTypes = {
+	email: PropTypes.string,
+	password: PropTypes.string,
+	name: PropTypes.string,
+	age: PropTypes.string,
+	occupation: PropTypes.string,
+	city: PropTypes.city,
+	change: PropTypes.func,
+	sign: PropTypes.func
+}

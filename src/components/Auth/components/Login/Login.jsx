@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Login.scss';
 
@@ -13,6 +14,7 @@ const Login = ({ email, password, change, submit, trigger }) => {
 					name="email"
 					value={email}
 					onChange={change}
+					required
 				/>
 			</label>
 			<label className="auth__label">
@@ -23,6 +25,7 @@ const Login = ({ email, password, change, submit, trigger }) => {
 					name="password"
 					value={password}
 					onChange={change}
+					required
 				/>
 			</label>
 			<button className="auth__btn auth__btn-signin" type="submit">
@@ -40,3 +43,12 @@ const Login = ({ email, password, change, submit, trigger }) => {
 };
 
 export default Login;
+
+
+Login.propTypes = {
+	email: PropTypes.string,
+	password: PropTypes.string,
+	change: PropTypes.func,
+	submit: PropTypes.func,
+	trigger: PropTypes.func
+}

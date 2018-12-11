@@ -20,6 +20,5 @@ export default Button;
 Button.propTypes = {
   className: PropTypes.string,
   isShown: PropTypes.bool,
-  toggleMenu: PropTypes.func,
-  text: PropTypes.string
+  toggleMenu: PropTypes.func
 }

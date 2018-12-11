@@ -86,6 +86,15 @@ class Auth extends Component {
 					occupation: '',
 					city: ''
 				});
+				if (res.data.success !== false) {
+					this.setState({
+						redirect: true,
+						path: <Redirect to="/" />
+					});
+				} else {
+					const error = new Error(res.error);
+					throw error;
+				}
 			})
 			.catch(err => console.log(err));
 	};
@@ -133,22 +142,22 @@ class Auth extends Component {
 									trigger={this.toggleSignUp}
 								/>
 							) : (
-								<Sign
-									email={email}
-									password={password}
-									name={name}
-									age={age}
-									occupation={occupation}
-									city={city}
-									change={this.handleInputChange}
-									sign={this.handleSignUp}
-								/>
-							)}
+									<Sign
+										email={email}
+										password={password}
+										name={name}
+										age={age}
+										occupation={occupation}
+										city={city}
+										change={this.handleInputChange}
+										sign={this.handleSignUp}
+									/>
+								)}
 						</div>
 					</div>
 				) : (
-					<div>{this.state.path}</div>
-				)}
+						<div>{this.state.path}</div>
+					)}
 			</div>
 		);
 	}

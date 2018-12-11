@@ -179,6 +179,9 @@ class Menu extends Component {
 export default Menu;
 
 Menu.propTypes = {
+	users: PropTypes.array,
 	isShown: PropTypes.bool,
-	toggleMenu: PropTypes.func
+	toggleMenu: PropTypes.func,
+	isLoading: PropTypes.bool,
+	isUpdating: PropTypes.func
 };

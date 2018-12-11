@@ -60,7 +60,7 @@ const Content = ({ users, visible, value, onSearchChange }) => {
 export default Content;
 
 Content.propTypes = {
-	email: PropTypes.string,
+	isShown: PropTypes.bool,
 	users: PropTypes.array,
 	visible: PropTypes.number,
 	value: PropTypes.string,
